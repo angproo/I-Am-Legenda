@@ -1,0 +1,19 @@
+using UnityEngine;
+using TMPro;
+
+public class UIManager : MonoBehaviour, IThreatObserver
+{
+    public TextMeshProUGUI threatText;
+
+    public void OnThreatChanged(int currentThreat)
+    {
+        // Actualiza el texto de TMP
+        threatText.text = $"AMENAZA: {currentThreat}%";
+    }
+
+    private void Start()
+    {
+        ThreatManager tm = FindObjectOfType<ThreatManager>();
+        if (tm != null) tm.RegisterObserver(this);
+    }
+}
