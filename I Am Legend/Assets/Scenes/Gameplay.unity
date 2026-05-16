@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77160510}
   - component: {fileID: 77160509}
+  - component: {fileID: 77160511}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -148,7 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da805f87ce5aba4faf218a86e88f4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  spawnRate: 2
+  factory: {fileID: 77160511}
+  zombieDataNormal: {fileID: 11400000, guid: e9c1c430350ce2f4fbb56de90f5999a7, type: 2}
+  baseSpawnRate: 2
 --- !u!4 &77160510
 Transform:
   m_ObjectHideFlags: 0
@@ -164,6 +167,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77160511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77160508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536ffb6aa795a7b468ead3e7e04d3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieFactory
+  zombieBasePrefab: {fileID: 6730880285889290280, guid: a54858b8b0a9aed4c97d49807fb21a40, type: 3}
 --- !u!1 &672513047
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

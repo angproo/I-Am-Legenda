@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class ZombieBase : MonoBehaviour
 {
-    public int threatValue = 5;
+    private ZombieData data;
 
-    public void Die()
+   
+    public void Initialize(ZombieData zombieData)
     {
-        // cuando se muere se busca el maanger y suma el punto
-        FindObjectOfType<ThreatManager>().AddThreat(threatValue);
-        Destroy(gameObject);
+        data = zombieData;
     }
 
-    
+  
     private void OnMouseDown()
     {
         Die();
+    }
+
+    private void Die()
+    {
+        ThreatManager tm = FindObjectOfType<ThreatManager>();
+        if (tm != null && data != null)
+        {
+            tm.AddThreat(data.threatValue);
+        }
+
+        Destroy(gameObject); 
     }
 }

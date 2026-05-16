@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour, IThreatObserver
 
     public void OnThreatChanged(int currentThreat)
     {
-        // Actualiza el texto de TMP
+       
         threatText.text = $"AMENAZA: {currentThreat}%";
     }
 
