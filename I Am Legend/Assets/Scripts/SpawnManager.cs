@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
         mainCamera = Camera.main;
         currentSpawnRate = baseSpawnRate;
 
-        ThreatManager tm = FindObjectOfType<ThreatManager>();
+        ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) tm.RegisterObserver(this);
     }
 
@@ -31,21 +31,27 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
 
     private void SpawnZombieInCamera()
     {
-        float margin = 0.1f;
-        float randomX = Random.Range(margin, 1.0f - margin);
-        float randomY = Random.Range(margin, 1.0f - margin);
+       
+        float edgeOffset = 0.1f;
+        float randomX = Random.Range(0, 2) == 0 ? -edgeOffset : 1.0f + edgeOffset;
+        float randomY = Random.Range(-edgeOffset, 1.0f + edgeOffset);
 
         
-        Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(new Vector3(randomX, randomY, Mathf.Abs(mainCamera.transform.position.z)));
-        spawnPosition.z = 0; 
+        if (Random.Range(0, 2) == 0)
+        {
+            randomX = Random.Range(-edgeOffset, 1.0f + edgeOffset);
+            randomY = Random.Range(0, 2) == 0 ? -edgeOffset : 1.0f + edgeOffset;
+        }
 
-       
+        Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(new Vector3(randomX, randomY, Mathf.Abs(mainCamera.transform.position.z)));
+        spawnPosition.z = 0;
+
         factory.CreateZombie(zombieDataNormal, spawnPosition);
     }
 
     public void OnThreatChanged(int currentThreat)
     {
         
-        currentSpawnRate = Mathf.Max(0.4f, baseSpawnRate - (currentThreat * 0.02f));
+        currentSpawnRate = Mathf.Max(0.2f, baseSpawnRate - (currentThreat * 0.02f));
     }
 }

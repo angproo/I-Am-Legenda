@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour, IThreatObserver
 
     private void Start()
     {
-        ThreatManager tm = FindObjectOfType<ThreatManager>();
+        ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) tm.RegisterObserver(this);
     }
 }
