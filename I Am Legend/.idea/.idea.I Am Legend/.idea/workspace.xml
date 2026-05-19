@@ -10,7 +10,9 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d0841a-0a45-4ccc-a7a2-ece236b6b2fe" name="Changes" comment="" />
+    <list default="true" id="b1d0841a-0a45-4ccc-a7a2-ece236b6b2fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +25,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ZombieBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ZombieFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,6 +111,8 @@
       <workItem from="1778686765670" duration="40000" />
       <workItem from="1778686832029" duration="2115000" />
       <workItem from="1778943734502" duration="6298000" />
+      <workItem from="1779127382338" duration="8307000" />
+      <workItem from="1779224992801" duration="4909000" />
     </task>
     <servers />
   </component>
