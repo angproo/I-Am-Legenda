@@ -4,29 +4,30 @@ using System.Collections.Generic;
 
 public class ThreatManager : MonoBehaviour
 {
-    [SerializeField] private int currentThreat = 0;
+   [SerializeField] private int currentThreat = 0;
+   public int CurrentThreat => currentThreat;
     
-    // --- CANAL A: Patrón Observer Clásico (Con Interfaz) ---
     private List<IThreatObserver> observers = new List<IThreatObserver>();
-    
-    // --- CANAL B: Patrón Observer Moderno (Con Action) ---
     public static event Action<int> OnThreatChangedAction;
     
     private float checkTimer;
     public float checkInterval = 0.5f; 
-    public int threatPerZombie = 5;    
+    
+    // REDUCIMOS los valores por defecto para que el juego base sea MÁS FÁCIL
+    public int threatPerZombie = 2;       // Antes era 5, ahora cada zombie asusta menos
+    public float threatPerMinute = 4f;    // Antes era 10, ahora el tiempo corre a tu favor
     private float gameElapsedTime = 0f;
-    public float threatPerMinute = 10f; 
 
-    public void RegisterObserver(IThreatObserver observer)
-    {
-        if (!observers.Contains(observer))
-            observers.Add(observer);
+    public void RegisterObserver(IThreatObserver observer) 
+    { 
+        if (!observers.Contains(observer)) 
+        {
+            observers.Add(observer); 
+        }
     }
-
-    public void UnregisterObserver(IThreatObserver observer)
-    {
-        observers.Remove(observer);
+    public void UnregisterObserver(IThreatObserver observer) 
+    { 
+        observers.Remove(observer); 
     }
 
     private void Update()
@@ -51,22 +52,33 @@ public class ThreatManager : MonoBehaviour
         int newThreat = zombieThreat + timeThreat;
         newThreat = Mathf.Clamp(newThreat, 0, 100);
 
-        if (newThreat != currentThreat)
+        // Solo actualizamos si el cálculo natural es mayor al valor actual (para no pisar el slider)
+        if (newThreat > currentThreat)
         {
             currentThreat = newThreat;
-            NotifyObservers(); 
+            NotifyObservers();
+        }
+    }
+
+    // Esta función la llamará el Slider desde la UI para forzar el caos
+    public void SetThreatManually(float valorSlider)
+    {
+        // Convertimos el float del slider (0.0 a 100.0) a un entero redondo (0 a 100)
+        int nuevoMiedo = Mathf.RoundToInt(valorSlider);
+    
+        // Nos aseguramos de que no se pase de los límites
+        nuevoMiedo = Mathf.Clamp(nuevoMiedo, 0, 100);
+
+        if (currentThreat != nuevoMiedo)
+        {
+            currentThreat = nuevoMiedo;
+            NotifyObservers(); // Le avisa a las luces, cámara, sonido, etc.
         }
     }
 
     private void NotifyObservers()
     {
-        // 1. Notificación al Canal Clásico (Interfaces)
-        foreach (IThreatObserver observer in observers)
-        {
-            observer.OnThreatChanged(currentThreat);
-        }
-
-        // 2. Notificación al Canal Moderno (Action)
+        foreach (IThreatObserver observer in observers) observer.OnThreatChanged(currentThreat);
         OnThreatChangedAction?.Invoke(currentThreat);
     }
 }

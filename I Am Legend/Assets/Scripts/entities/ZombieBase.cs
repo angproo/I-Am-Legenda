@@ -36,8 +36,12 @@ public class ZombieBase : MonoBehaviour
 
     private void Die()
     {
-        
-        
+        AutoWeapon weapon = FindFirstObjectByType<AutoWeapon>();
+        if (weapon != null)
+        {
+            weapon.RegisterKill(); // Le sumamos una baja al contador
+        }
+
         Destroy(gameObject);
     }
 }

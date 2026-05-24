@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SistemaLuces : MonoBehaviour
 {
-    private Light luzGlobal; // Si es 2D usás UnityEngine.Rendering.Universal.Light2D
+    private Light luzGlobal; // Si usás 2D: UnityEngine.Rendering.Universal.Light2D
 
     private void Awake()
     {
@@ -11,40 +11,24 @@ public class SistemaLuces : MonoBehaviour
 
     private void OnEnable()
     {
-        // Nos sintonizamos al canal de Action
-        ThreatManager.OnThreatChangedAction += AjustarIluminacion;
+        ThreatManager.OnThreatChangedAction += ActualizarLuces;
     }
 
     private void OnDisable()
     {
-        // Nos desvinculamos
-        ThreatManager.OnThreatChangedAction -= AjustarIluminacion;
+        ThreatManager.OnThreatChangedAction -= ActualizarLuces;
     }
 
-    private void AjustarIluminacion(int threat)
+    private void ActualizarLuces(int threat)
     {
         if (luzGlobal == null) return;
 
-        // Reacciones según tu esquema técnico:
-        if (threat >= 76) // Oscuridad extrema
-        {
-            luzGlobal.intensity = 0.1f;
-            luzGlobal.color = Color.red;
-        }
-        else if (threat >= 51) // Parpadeos y sombras
-        {
-            luzGlobal.intensity = 0.4f;
-            luzGlobal.color = Color.gray;
-        }
-        else if (threat >= 26) // Luces tenues
-        {
-            luzGlobal.intensity = 0.7f;
-            luzGlobal.color = Color.white;
-        }
-        else // Luces normales
-        {
-            luzGlobal.intensity = 1.0f;
-            luzGlobal.color = Color.white;
-        }
+        float t = threat / 100f;
+
+        // La intensidad baja del 100% (1.0) al 15% (0.15) según sube el slider
+        luzGlobal.intensity = Mathf.Lerp(1.0f, 0.15f, t);
+
+        // El color transiciona de blanco puro a un rojo oscuro de horda/alerta
+        luzGlobal.color = Color.Lerp(Color.white, new Color(0.5f, 0.0f, 0.0f), t);
     }
 }
