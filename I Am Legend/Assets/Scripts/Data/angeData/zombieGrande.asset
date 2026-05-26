@@ -15,4 +15,4 @@ MonoBehaviour:
   zombieName: zombie Grande
   prefabVisual: {fileID: 3553907979666451325, guid: 3fc60ec9e4405f3478c8c79bcabb26f2, type: 3}
   threatValue: 5
-  speed: 5
+  speed: 3

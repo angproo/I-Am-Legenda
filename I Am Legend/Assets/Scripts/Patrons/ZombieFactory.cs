@@ -3,7 +3,7 @@ using UnityEngine;
 public class ZombieFactory : MonoBehaviour, IThreatObserver
 {
     public GameObject zombieBasePrefab; 
-    public SpawnTableSO tablaDeSpawn; // Vinculación con tu ScriptableObject tabla
+    public SpawnTableSO tablaDeSpawn; 
     
     private ZombieData zombieActualConfigurado; 
     private Transform playerTransform;
@@ -13,12 +13,12 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player"); 
         if (playerObj != null) playerTransform = playerObj.transform;
 
-        // Se registra automáticamente con el gestor de amenazas
+        // Registro automático en el ThreatManager
         ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) tm.RegisterObserver(this);
     }
 
-    // Este método cambia el tipo de zombie cuando mueves el slider
+    // Al cambiar la amenaza, selecciona el nuevo ZombieData correspondiente
     public void OnThreatChanged(int currentThreat)
     {
         if (tablaDeSpawn != null)
@@ -29,7 +29,7 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
 
     public ZombieData GetZombieActual()
     {
-        // Si por alguna razón arranca vacío, le da el del nivel 0 por seguridad
+        // Resguardo de seguridad si se solicita un enemigo al iniciar en 0%
         if (zombieActualConfigurado == null && tablaDeSpawn != null)
         {
             zombieActualConfigurado = tablaDeSpawn.ObtenerZombiePorMiedo(0);
@@ -37,6 +37,7 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
         return zombieActualConfigurado;
     }
 
+    // Instancia el cascarón físico e inyecta el arte visual adjunto al ScriptableObject
     public GameObject CreateZombie(ZombieData data, Vector3 position, int id, SpawnManager manager)
     {
         if (data == null) return null;

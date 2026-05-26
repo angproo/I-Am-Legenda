@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f3669e91940e644a649d2c168906eb, type: 3}
   m_Name: TablaSpawn
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTableSO
-  configuraciones: []
+  configuraciones:
+  - minMiedo: 0
+    maxMiedo: 44
+    listaZombies:
+    - {fileID: 11400000, guid: e9c1c430350ce2f4fbb56de90f5999a7, type: 2}
+  - minMiedo: 45
+    maxMiedo: 100
+    listaZombies:
+    - {fileID: 11400000, guid: e9c1c430350ce2f4fbb56de90f5999a7, type: 2}
+    - {fileID: 11400000, guid: 742694193fff59548aa72ecfc1b2b698, type: 2}

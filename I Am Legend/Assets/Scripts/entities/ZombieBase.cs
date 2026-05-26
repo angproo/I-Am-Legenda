@@ -6,6 +6,7 @@ public class ZombieBase : MonoBehaviour
     private float currentSpeed;
     private Transform player;
 
+    // Control de tracking e ID único de tu diagrama manual
     public int InstanceID { get; private set; }
     private SpawnManager manager;
 
@@ -31,13 +32,14 @@ public class ZombieBase : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            Destroy(collision.gameObject); 
+            Destroy(collision.gameObject); // Destruye la bala
             Die();
         }
     }
 
     private void Die()
     {
+        // Se borra de la lista del Manager usando su ID único antes de ser destruido
         if (manager != null)
         {
             manager.RemoveById(InstanceID);
