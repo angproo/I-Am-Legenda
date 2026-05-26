@@ -3,7 +3,7 @@ using UnityEngine;
 public class ZombieFactory : MonoBehaviour, IThreatObserver
 {
     public GameObject zombieBasePrefab; 
-    public SpawnTableSO tablaDeSpawn; 
+    public SpawnTableSO tablaDeSpawn; // Vinculación con tu ScriptableObject tabla
     
     private ZombieData zombieActualConfigurado; 
     private Transform playerTransform;
@@ -13,12 +13,12 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player"); 
         if (playerObj != null) playerTransform = playerObj.transform;
 
-        // Nos registramos para escuchar al Gestor de Miedo
+        // Se registra automáticamente con el gestor de amenazas
         ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) tm.RegisterObserver(this);
     }
 
-    // Cada vez que cambia el slider, este método elige el zombie de la tabla automáticamente
+    // Este método cambia el tipo de zombie cuando mueves el slider
     public void OnThreatChanged(int currentThreat)
     {
         if (tablaDeSpawn != null)
@@ -29,7 +29,7 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
 
     public ZombieData GetZombieActual()
     {
-        // Si por algún motivo empieza en 0 y no ha cambiado, le damos un valor por defecto seguro
+        // Si por alguna razón arranca vacío, le da el del nivel 0 por seguridad
         if (zombieActualConfigurado == null && tablaDeSpawn != null)
         {
             zombieActualConfigurado = tablaDeSpawn.ObtenerZombiePorMiedo(0);
@@ -43,7 +43,6 @@ public class ZombieFactory : MonoBehaviour, IThreatObserver
 
         GameObject newZombie = Instantiate(zombieBasePrefab, position, Quaternion.identity);
         
-        // Aquí se le pega el gráfico/arte diferente de cada monstruo
         if (data.prefabVisual != null)
         {
             Instantiate(data.prefabVisual, newZombie.transform);

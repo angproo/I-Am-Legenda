@@ -10,11 +10,10 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
     private float timer;
     private Camera mainCamera;
 
-    // CONTROL DE IDs (Tu lista de tracking única)
+    // Lista de control e IDs de tu diagrama manual
     private List<ZombieBase> misId = new List<ZombieBase>();
     private int contadorId = 0;
 
-    // Propiedad para obtener la cantidad de elementos activos (Reemplaza al misId.length())
     public int MisId
     {
         get { return misId.Count; }
@@ -54,12 +53,13 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
         Vector3 spawnPosition = mainCamera.ViewportToWorldPoint(new Vector3(randomX, randomY, Mathf.Abs(mainCamera.transform.position.z)));
         spawnPosition.z = 0;
 
-        int nuevoId = contadorId++; // Generamos tu ID único incremental
+        int nuevoId = contadorId++;
+        
+        // ¡CAMBIO CLAVE! Le pedimos a la fábrica el zombie que toca según el slider
         ZombieData dataParaSpawnear = factory.GetZombieActual();
 
         if (dataParaSpawnear != null)
         {
-            // Creamos el zombie pasándole su ID y la referencia de este manager
             GameObject go = factory.CreateZombie(dataParaSpawnear, spawnPosition, nuevoId, this);
             
             if (go != null)
@@ -67,13 +67,12 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
                 ZombieBase scriptZombie = go.GetComponent<ZombieBase>();
                 if (scriptZombie != null)
                 {
-                    misId.Add(scriptZombie); // Lo anotamos en la lista de tracking
+                    misId.Add(scriptZombie);
                 }
             }
         }
     }
 
-    // ELIMINAR POR ID: El método con el bucle foreach de tu dibujo
     public void RemoveById(int id)
     {
         ZombieBase encontrado = null;
@@ -95,7 +94,6 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
 
     public void OnThreatChanged(int currentThreat)
     {
-        // A mayor amenaza, menor tiempo entre spawns
         currentSpawnRate = Mathf.Max(0.2f, baseSpawnRate - (currentThreat * 0.02f));
     }
 }
