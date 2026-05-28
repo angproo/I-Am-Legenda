@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour, IThreatObserver
             tm.RegisterObserver(this);
         }
 
-        // Inicializamos los límites del slider
+      
         if (sliderMiedo != null)
         {
             sliderMiedo.minValue = 0f;
@@ -27,10 +27,10 @@ public class UIManager : MonoBehaviour, IThreatObserver
         }
     }
 
-    // El método de la interfaz ahora SOLO actualiza el texto decorativo
+  
     public void OnThreatChanged(int currentThreat)
     {
-        // El texto te sigue mostrando el nivel actual del juego
+     
         if (threatText != null)
         {
             threatText.text = $"AMENAZA: {currentThreat}%";

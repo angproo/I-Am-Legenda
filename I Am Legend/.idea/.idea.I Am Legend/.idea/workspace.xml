@@ -11,14 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1d0841a-0a45-4ccc-a7a2-ece236b6b2fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/indexLayout.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ThreatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/ThreatManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/ControladorSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/ControladorSlider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaLuces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaLuces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Prefabs/Bala.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Prefabs/Bala.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/AutoWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/entities/AutoWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaSonido.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaSonido.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/AutoWeapon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/AutoWeapon.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/ZombieBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/entities/ZombieBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +128,9 @@
       <workItem from="1779127382338" duration="8307000" />
       <workItem from="1779224992801" duration="4909000" />
       <workItem from="1779551778480" duration="6684000" />
+      <workItem from="1779670826310" duration="4330000" />
+      <workItem from="1779829638727" duration="5589000" />
+      <workItem from="1779890565646" duration="3329000" />
     </task>
     <servers />
   </component>

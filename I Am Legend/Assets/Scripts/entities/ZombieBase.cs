@@ -29,7 +29,7 @@ public class ZombieBase : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            Destroy(collision.gameObject); // Destruye la bala
+            Destroy(collision.gameObject); 
             Die();
         }
     }
@@ -39,7 +39,7 @@ public class ZombieBase : MonoBehaviour
         AutoWeapon weapon = FindFirstObjectByType<AutoWeapon>();
         if (weapon != null)
         {
-            weapon.RegisterKill(); // Le sumamos una baja al contador
+            weapon.RegisterKill(); 
         }
 
         Destroy(gameObject);

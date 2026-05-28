@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
         mainCamera = Camera.main;
         currentSpawnRate = baseSpawnRate;
 
-        // REGISTRO CLÁSICO: Se busca el mánager y se anota en su lista de interfaces
+       
         ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) 
         {
@@ -51,10 +51,10 @@ public class SpawnManager : MonoBehaviour, IThreatObserver
         factory.CreateZombie(zombieDataNormal, spawnPosition);
     }
 
-    // El método obligatorio de la interfaz que el ThreatManager va a llamar desde su bucle foreach
+    
     public void OnThreatChanged(int currentThreat)
     {
-        // A más amenaza, el tiempo entre spawns se achica (salen más rápido)
+       
         currentSpawnRate = Mathf.Max(0.2f, baseSpawnRate - (currentThreat * 0.02f));
     }
 }

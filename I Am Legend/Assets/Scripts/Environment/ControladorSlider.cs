@@ -6,36 +6,49 @@ public class ControladorSlider : MonoBehaviour
     private Slider slider;
     private ThreatManager tm;
     private CameraFollow camFollow;
+    private SistemaLuces sisLuces;
+    private SistemaSonido sisSonido;
 
     private void Start()
     {
         slider = GetComponent<Slider>();
         tm = FindFirstObjectByType<ThreatManager>();
         camFollow = FindFirstObjectByType<CameraFollow>();
+        sisLuces = FindFirstObjectByType<SistemaLuces>();
+        sisSonido = FindFirstObjectByType<SistemaSonido>(); 
 
         if (slider != null)
         {
-            // Forzamos los límites de la barra en la interfaz
             slider.minValue = 0f;
             slider.maxValue = 100f;
-            
-            // Escuchamos el evento cuando el jugador arrastra la barra con el mouse
             slider.onValueChanged.AddListener(AlCambiarSlider);
         }
     }
 
     private void AlCambiarSlider(float valor)
     {
-        // 1. Le mandamos el valor al ThreatManager para los enemigos y el texto de UI
+        // (Spawner, UI de texto)
         if (tm != null)
         {
             tm.SetThreatManually(valor);
         }
 
-        // 2. Le mandamos el valor directo a la cámara para que haga el shake y el zoom manual
+        // Control Visual 
         if (camFollow != null)
         {
             camFollow.ActualizarEfectosPorSlider(valor);
+        }
+
+        // Control Visual 
+        if (sisLuces != null)
+        {
+            sisLuces.ActualizarLuces(valor); 
+        }
+
+        // Control Auditivo
+        if (sisSonido != null)
+        {
+            sisSonido.AjustarMusicaPorSlider(valor);
         }
     }
 }

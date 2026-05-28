@@ -9,25 +9,19 @@ public class SistemaSonido : MonoBehaviour
         musicaFondo = GetComponent<AudioSource>();
     }
 
-    private void OnEnable()
-    {
-        // Nos sintonizamos al canal de Action
-        ThreatManager.OnThreatChangedAction += AjustarMusica;
-    }
-
-    private void OnDisable()
-    {
-        ThreatManager.OnThreatChangedAction -= AjustarMusica;
-    }
-
-    private void AjustarMusica(int threat)
+    // El slider llamará directamente a esta función pública pasándole su valor float (0 a 100)
+    public void AjustarMusicaPorSlider(float valorSlider)
     {
         if (musicaFondo == null) return;
 
-        // Reacciones de sonido según tu esquema técnico:
-        if (threat >= 76) musicaFondo.pitch = 1.4f;      // Caos sonoro constante
-        else if (threat >= 51) musicaFondo.pitch = 1.2f; // Música intensa y sustos
-        else if (threat >= 26) musicaFondo.pitch = 1.05f;// Música ligera tensión
-        else musicaFondo.pitch = 1.0f;                   // Ambiente tranquilo
+        // Clasificación por rangos idéntica a tu diseño original pero usando el valor físico del slider
+        if (valorSlider >= 76f) 
+            musicaFondo.pitch = 1.4f;      // Caos sonoro constante (Modo Furia / Máximo)
+        else if (valorSlider >= 51f) 
+            musicaFondo.pitch = 1.2f; // Música intensa y sustos
+        else if (valorSlider >= 26f) 
+            musicaFondo.pitch = 1.05f;// Música ligera tensión
+        else 
+            musicaFondo.pitch = 1.0f;      // Ambiente tranquilo (¡Vuelve a la normalidad al llegar a 0!)
     }
 }

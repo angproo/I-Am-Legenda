@@ -13,9 +13,9 @@ public class ThreatManager : MonoBehaviour
     private float checkTimer;
     public float checkInterval = 0.5f; 
     
-    // REDUCIMOS los valores por defecto para que el juego base sea MÁS FÁCIL
-    public int threatPerZombie = 2;       // Antes era 5, ahora cada zombie asusta menos
-    public float threatPerMinute = 4f;    // Antes era 10, ahora el tiempo corre a tu favor
+    
+    public int threatPerZombie = 2;       
+    public float threatPerMinute = 4f;   
     private float gameElapsedTime = 0f;
 
     public void RegisterObserver(IThreatObserver observer) 
@@ -43,6 +43,12 @@ public class ThreatManager : MonoBehaviour
 
     private void CalculateDynamicThreat()
     {
+        if (currentThreat > 0)
+        {
+            return; 
+        }
+
+        // Si el slider está en 0, el juego calcula la amenaza de fondo normalmente
         ZombieBase[] activeZombies = FindObjectsByType<ZombieBase>(FindObjectsSortMode.None);
         int zombieThreat = activeZombies.Length * threatPerZombie;
 
@@ -51,28 +57,25 @@ public class ThreatManager : MonoBehaviour
 
         int newThreat = zombieThreat + timeThreat;
         newThreat = Mathf.Clamp(newThreat, 0, 100);
-
-        // Solo actualizamos si el cálculo natural es mayor al valor actual (para no pisar el slider)
-        if (newThreat > currentThreat)
+        
+        if (newThreat != currentThreat)
         {
             currentThreat = newThreat;
             NotifyObservers();
         }
     }
 
-    // Esta función la llamará el Slider desde la UI para forzar el caos
+  
     public void SetThreatManually(float valorSlider)
     {
-        // Convertimos el float del slider (0.0 a 100.0) a un entero redondo (0 a 100)
+       
         int nuevoMiedo = Mathf.RoundToInt(valorSlider);
-    
-        // Nos aseguramos de que no se pase de los límites
         nuevoMiedo = Mathf.Clamp(nuevoMiedo, 0, 100);
 
         if (currentThreat != nuevoMiedo)
         {
             currentThreat = nuevoMiedo;
-            NotifyObservers(); // Le avisa a las luces, cámara, sonido, etc.
+            NotifyObservers();
         }
     }
 
