@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoWeapon
   bulletPrefab: {fileID: 7803642555495702273, guid: b7c16a6b9777dca41b79b844023cabe7, type: 3}
+  muzzleFlashPrefab: {fileID: 0}
   fireRate: 1
   fireRange: 7
 --- !u!114 &873535164

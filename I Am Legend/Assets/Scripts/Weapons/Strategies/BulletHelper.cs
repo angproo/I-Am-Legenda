@@ -6,8 +6,18 @@ public static class BulletHelper
     {
         Quaternion bulletRotation = Quaternion.Euler(new Vector3(0, 0, angulo));
         GameObject bullet = Object.Instantiate(prefab, position, bulletRotation);
+        if (bullet.GetComponent<TrailRenderer>() == null)
+        {
+            TrailRenderer trail = bullet.AddComponent<TrailRenderer>();
+            trail.time = 0.1f;
+            trail.startWidth = 0.1f;
+            trail.endWidth = 0f;
+            trail.material = new Material(Shader.Find("Sprites/Default"));
+            trail.startColor = Color.yellow;
+            trail.endColor = new Color(1, 1, 0, 0);
+        }
         
-        Object.Destroy(bullet, 3.0f);
+        Object.Destroy(bullet, 1.0f);
         
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)

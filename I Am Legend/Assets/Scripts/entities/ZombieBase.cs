@@ -29,9 +29,20 @@ public class ZombieBase : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            Destroy(collision.gameObject); 
+            SpawnImpactEffect(collision.transform.position); // NUEVO
+            Destroy(collision.gameObject);
             Die();
         }
+    }
+    
+    private void SpawnImpactEffect(Vector3 position)
+    {
+        // Crear un pequeño efecto visual de impacto
+        GameObject impact = new GameObject("ImpactEffect");
+        impact.transform.position = position;
+        var particles = impact.AddComponent<ParticleSystem>();
+        // Configuración rápida de partículas...
+        Object.Destroy(impact, 0.5f);
     }
 
     private void Die()

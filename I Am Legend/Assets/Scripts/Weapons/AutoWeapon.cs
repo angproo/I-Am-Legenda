@@ -3,6 +3,7 @@ using UnityEngine;
 public class AutoWeapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject muzzleFlashPrefab;
     public float fireRate = 0.5f;
     public float fireRange = 7f;
     private float fireTimer;
@@ -27,8 +28,18 @@ public class AutoWeapon : MonoBehaviour
             {
                 EvaluateStrategy();
                 Shoot(target);
+                TriggerMuzzleFlash();
                 fireTimer = 0f;
             }
+        }
+    }
+    private void TriggerMuzzleFlash()
+    {
+        if (muzzleFlashPrefab != null)
+        {
+            // Instancia el destello en la posición del arma
+            GameObject flash = Instantiate(muzzleFlashPrefab, transform.position, transform.rotation);
+            Destroy(flash, 0.1f); // Se destruye casi instantáneamente
         }
     }
 
