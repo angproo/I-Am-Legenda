@@ -9,6 +9,7 @@ public class PlayerController : BaseEntity
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (gameObject.tag != "Player") gameObject.tag = "Player"; 
     }
 
     private void Update()
@@ -19,22 +20,14 @@ public class PlayerController : BaseEntity
 
     private void FixedUpdate()
     {
-      
+        // Aplicación del Patrón Command
         ICommand move = new MoveCommand(rb, moveInput.normalized, moveSpeed);
         move.Execute();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-       
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.GetComponent<ZombieBase>())
-        {
-            Die();
-        }
-    }
-
     public override void Die()
     {
-        Time.timeScale = 0; // Pausa el juego
+        Debug.Log("Jugador Muerto");
+        Time.timeScale = 0; 
     }
 }

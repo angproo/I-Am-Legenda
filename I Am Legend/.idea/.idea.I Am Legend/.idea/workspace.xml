@@ -13,20 +13,11 @@
     <list default="true" id="b1d0841a-0a45-4ccc-a7a2-ece236b6b2fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.I Am Legend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ThreatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/ThreatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/ZombieData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/ZombieData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraFollow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/ControladorSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/ControladorSlider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaLuces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaLuces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaSonido.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/SistemaSonido.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/ZombieNormal.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/ZombieNormal.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Patrons/Builder/ZombieBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Patrons/Builder/ZombieBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Patrons/ZombieFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Patrons/ZombieFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Prefabs/Zombi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Prefabs/Zombi.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/AutoWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/AutoWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Strategies/BurstShootStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Strategies/BurstShootStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/entities/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/entities/ZombieBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/entities/ZombieBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +130,7 @@
       <workItem from="1780411537974" duration="3943000" />
       <workItem from="1780435807666" duration="6003000" />
       <workItem from="1780450803882" duration="531000" />
+      <workItem from="1780497682726" duration="2827000" />
     </task>
     <servers />
   </component>

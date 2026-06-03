@@ -7,8 +7,13 @@ public class ThreatManager : MonoBehaviour
     [SerializeField] private int currentThreat = 0;
     public int CurrentThreat => currentThreat;
 
-   
     private List<IThreatObserver> observers = new List<IThreatObserver>();
+
+    private void Start() 
+    {
+       
+        NotifyObservers();
+    }
 
     public void RegisterObserver(IThreatObserver observer) 
     {
@@ -34,8 +39,7 @@ public class ThreatManager : MonoBehaviour
     {
         foreach (IThreatObserver observer in observers) 
         {
-            observer.OnThreatChanged(currentThreat);
+            if (observer != null) observer.OnThreatChanged(currentThreat);
         }
-       
     }
 }

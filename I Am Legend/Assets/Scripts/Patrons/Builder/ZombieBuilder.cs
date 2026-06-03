@@ -13,13 +13,13 @@ public class ZombieBuilder
 
     public ZombieBuilder SetSpeed(float s) 
     {
-        script.speed = s;
+        if (script != null) script.speed = s;
         return this;
     }
 
     public ZombieBuilder SetName(string name) 
     {
-        zombieObj.name = name;
+        if (zombieObj != null) zombieObj.name = name;
         return this;
     }
 

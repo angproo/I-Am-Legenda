@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   factory: {fileID: 77160511}
-  zombieDataNormal: {fileID: 11400000, guid: e9c1c430350ce2f4fbb56de90f5999a7, type: 2}
   baseSpawnRate: 2
 --- !u!4 &77160510
 Transform:
@@ -180,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieFactory
   zombieBasePrefab: {fileID: 6730880285889290280, guid: a54858b8b0a9aed4c97d49807fb21a40, type: 3}
+  tablaDeSpawn: {fileID: 11400000, guid: 09c497294a9343745bc77ea17b69e7af, type: 2}
 --- !u!1 &278397237
 GameObject:
   m_ObjectHideFlags: 0
