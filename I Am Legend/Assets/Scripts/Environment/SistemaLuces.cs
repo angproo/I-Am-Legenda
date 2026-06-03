@@ -3,24 +3,13 @@ using UnityEngine.Rendering.Universal;
 
 public class SistemaLuces : MonoBehaviour
 {
-    private Light2D luzGlobal;
+    public Light2D globalLight;
 
-    private void Awake()
-    {
-        luzGlobal = GetComponent<Light2D>();
-    }
-    
-
-  public void ActualizarLuces(float ValorSlider)
-    {
-        if (luzGlobal == null) return;
-
-        float t = ValorSlider / 100f;
-
-     
-        luzGlobal.intensity = Mathf.Lerp(1.0f, 0.15f, t);
-
-       
-        luzGlobal.color = Color.Lerp(Color.white, new Color(0.5f, 0.0f, 0.0f), t);
+    public void ActualizarLuces(float valor) {
+        if (globalLight == null) return;
+        
+        float t = valor / 100f;
+        globalLight.intensity = Mathf.Lerp(1.0f, 0.4f, t);
+        globalLight.color = Color.Lerp(Color.white, new Color(1f, 0.5f, 0.5f), t);
     }
 }

@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour, IThreatObserver
 
     private void Start()
     {
-        // Registro clásico en el ThreatManager
+        
         ThreatManager tm = FindFirstObjectByType<ThreatManager>();
         if (tm != null) 
         {

@@ -358,6 +358,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb039303a1e4b94d88e51f9ea197823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaSonido
+--- !u!1 &451024291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451024293}
+  - component: {fileID: 451024292}
+  m_Layer: 0
+  m_Name: Mediator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &451024292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451024291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0289d8fbc5586eb4b8945ac8895efa4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameMediator
+  threatManager: {fileID: 772074084}
+  luces: {fileID: 1885674232}
+  sonido: {fileID: 351961991}
+  cam: {fileID: 737414837}
+--- !u!4 &451024293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451024291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.36271, y: 5.75986, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &672513047
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,8 +679,6 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   sizeInicial: 8
   sizeMaximoMiedo: 6
-  colorFondoInicial: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
-  colorFondoMiedo: {r: 0.01495194, g: 0.0678375, b: 0.1509434, a: 1}
   maxShakeIntensity: 0.3
 --- !u!1 &772074083
 GameObject:
@@ -664,9 +710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThreatManager
   currentThreat: 0
-  checkInterval: 0.5
-  threatPerZombie: 5
-  threatPerMinute: 10
 --- !u!4 &772074085
 Transform:
   m_ObjectHideFlags: 0
@@ -716,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoWeapon
   bulletPrefab: {fileID: 7803642555495702273, guid: b7c16a6b9777dca41b79b844023cabe7, type: 3}
-  muzzleFlashPrefab: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 5605807036529839558, guid: 0b9199e000197de4ba2b03fe914bc0c7, type: 3}
   fireRate: 1
   fireRange: 7
 --- !u!114 &873535164
@@ -731,6 +774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84141fffb6c304646bef06e19daf3368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  health: 100
+  entityName: Jugador
   moveSpeed: 5
 --- !u!58 &873535165
 CircleCollider2D:
@@ -1158,6 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01782a2f8b17f5c41a47132413b3b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorSlider
+  mediator: {fileID: 451024292}
 --- !u!1 &1364994827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,6 +1525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f27d98b5af05c741898ab417db41f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaLuces
+  globalLight: {fileID: 1885674233}
 --- !u!114 &1885674233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,3 +1605,4 @@ SceneRoots:
   - {fileID: 873535168}
   - {fileID: 1885674234}
   - {fileID: 351961990}
+  - {fileID: 451024293}

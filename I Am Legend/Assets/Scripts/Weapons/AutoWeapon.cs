@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AutoWeapon : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+   public GameObject bulletPrefab;
     public GameObject muzzleFlashPrefab;
     public float fireRate = 0.5f;
     public float fireRange = 7f;
@@ -33,13 +33,13 @@ public class AutoWeapon : MonoBehaviour
             }
         }
     }
+
     private void TriggerMuzzleFlash()
     {
         if (muzzleFlashPrefab != null)
         {
-            // Instancia el destello en la posición del arma
             GameObject flash = Instantiate(muzzleFlashPrefab, transform.position, transform.rotation);
-            Destroy(flash, 0.1f); // Se destruye casi instantáneamente
+            Destroy(flash, 0.1f);
         }
     }
 
@@ -50,7 +50,7 @@ public class AutoWeapon : MonoBehaviour
 
     private void EvaluateStrategy()
     {
-        if (threatManager == null || threatManager.CurrentThreat < 100)
+        if (threatManager == null || threatManager.CurrentThreat < 95)
         {
             currentStrategy = new SimpleShootStrategy();
         }
@@ -62,7 +62,6 @@ public class AutoWeapon : MonoBehaviour
 
     private void Shoot(Transform target)
     {
-        // Le pasamos "this" (el script AutoWeapon actual) como el componente MonoBehaviour (caller)
         currentStrategy.ExecuteShoot(target, this, this.transform, bulletPrefab);
     }
 

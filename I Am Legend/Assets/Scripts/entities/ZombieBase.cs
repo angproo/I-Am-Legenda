@@ -1,58 +1,79 @@
 using UnityEngine;
 
-public class ZombieBase : MonoBehaviour
+public class ZombieBase : BaseEntity
 {
+   public float speed = 2f;
+    public Transform PlayerTransform { get; private set; }
+    private IZombieState currentState;
     private ZombieData data;
-    public float speed = 2f;
-    private Transform player;
 
-    public void Initialize(ZombieData zombieData)
+   
+    public int InstanceID { get; private set; }
+    private SpawnManager manager;
+
+   
+    public void Initialize(ZombieData zombieData, int id, SpawnManager spawnManager, Transform playerTransform) 
     {
-        data = zombieData;
-     
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) player = playerObj.transform;
+       
+        this.data = zombieData;
+        this.entityName = data.zombieName;
+        this.speed = data.speed;
+        
+       
+        this.InstanceID = id;
+        this.manager = spawnManager;
+        this.PlayerTransform = playerTransform;
+    
+      
+        SetState(new ChaseState());
+    }
+
+    public void SetState(IZombieState newState)
+    {
+        currentState = newState;
+        currentState.EnterState(this);
     }
 
     private void Update()
-    { 
-        
-        if (player != null)
+    {
+      
+        if (currentState != null) currentState.UpdateState(this);
+    }
+    
+   
+    public void ApplyThreatColor(float threatValue) 
+    {
+        float t = threatValue / 100f;
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null) 
         {
-            Vector3 direction = (player.position - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
+            sr.color = Color.Lerp(Color.white, Color.red, t);
         }
     }
-
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
-            SpawnImpactEffect(collision.transform.position); // NUEVO
-            Destroy(collision.gameObject);
-            Die();
+            Destroy(collision.gameObject); 
+            Die(); 
         }
     }
+
     
-    private void SpawnImpactEffect(Vector3 position)
+    public override void Die()
     {
-        // Crear un pequeño efecto visual de impacto
-        GameObject impact = new GameObject("ImpactEffect");
-        impact.transform.position = position;
-        var particles = impact.AddComponent<ParticleSystem>();
-        // Configuración rápida de partículas...
-        Object.Destroy(impact, 0.5f);
-    }
-
-    private void Die()
-    {
+       
         AutoWeapon weapon = FindFirstObjectByType<AutoWeapon>();
-        if (weapon != null)
+        if (weapon != null) weapon.RegisterKill();
+    
+       
+        if (manager != null)
         {
-            weapon.RegisterKill(); 
+            manager.RemoveById(InstanceID);
         }
-
+    
+       
         Destroy(gameObject);
     }
 }

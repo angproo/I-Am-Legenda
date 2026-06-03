@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseEntity
 {
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    private bool isDead = false;
 
     private void Start()
     {
@@ -14,35 +13,28 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isDead) return;
-
-      
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
     {
-        if (isDead) return;
-        rb.linearVelocity = moveInput.normalized * moveSpeed;
+      
+        ICommand move = new MoveCommand(rb, moveInput.normalized, moveSpeed);
+        move.Execute();
     }
 
-  
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.GetComponent<ZombieBase>())
         {
             Die();
         }
     }
 
-    private void Die()
+    public override void Die()
     {
-        isDead = true;
-        Debug.Log("¡El jugador ha muerto!");
-        
-      
-        Time.timeScale = 0f; 
+        Time.timeScale = 0; // Pausa el juego
     }
 }

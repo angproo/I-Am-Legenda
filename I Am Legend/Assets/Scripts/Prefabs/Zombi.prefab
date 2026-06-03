@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842a4946654899343b74824c90822bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieBase
+  health: 100
+  entityName: Zombie
   speed: 2
 --- !u!61 &-902436776637301840
 BoxCollider2D:

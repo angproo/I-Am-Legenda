@@ -2,26 +2,16 @@ using UnityEngine;
 
 public class SistemaSonido : MonoBehaviour
 {
-    private AudioSource musicaFondo;
+    private AudioSource source;
 
-    private void Awake()
+    void Awake() { source = GetComponent<AudioSource>(); }
+
+    public void AjustarMusicaPorSlider(float valor) 
     {
-        musicaFondo = GetComponent<AudioSource>();
-    }
-
-    // El slider llamará directamente a esta función pública pasándole su valor float (0 a 100)
-    public void AjustarMusicaPorSlider(float valorSlider)
-    {
-        if (musicaFondo == null) return;
-
-        // Clasificación por rangos idéntica a tu diseño original pero usando el valor físico del slider
-        if (valorSlider >= 76f) 
-            musicaFondo.pitch = 1.4f;      // Caos sonoro constante (Modo Furia / Máximo)
-        else if (valorSlider >= 51f) 
-            musicaFondo.pitch = 1.2f; // Música intensa y sustos
-        else if (valorSlider >= 26f) 
-            musicaFondo.pitch = 1.05f;// Música ligera tensión
-        else 
-            musicaFondo.pitch = 1.0f;      // Ambiente tranquilo (¡Vuelve a la normalidad al llegar a 0!)
+        if (source == null) return;
+        
+      
+        float t = valor / 100f;
+        source.pitch = Mathf.Lerp(1f, 1.5f, t);
     }
 }
